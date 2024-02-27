@@ -3,8 +3,16 @@ import { inject, ref, watch } from 'vue'
 import axios from 'axios'
 import Cards from '../components/Cards.vue'
 
-const { handleClickAdd, cards, initialCards, nameFilter, favoritesIds, isLoggedIn, currentUser } =
-  inject('provider')
+const {
+  handleClickAdd,
+  cards,
+  initialCards,
+  nameFilter,
+  favoritesIds,
+  isLoggedIn,
+  currentUser,
+  addedCards
+} = inject('provider')
 
 const sortBy = ref('')
 const searchQuery = ref('')
@@ -73,7 +81,8 @@ watch(searchQuery, () => {
     searchQueryFilter(
       initialCards.value.map((card) => ({
         ...card,
-        isFavorite: favoritesIds.value.includes(card.productId)
+        isFavorite: favoritesIds.value.includes(card.productId),
+        isAdded: addedCards.value.map((card) => card.productId).includes(card.productId)
       }))
     )
   )

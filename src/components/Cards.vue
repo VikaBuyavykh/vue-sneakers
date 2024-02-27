@@ -16,7 +16,7 @@ function showMore() {
   count.value = count.value + 4
 }
 
-watch(count, () => {
+watch(doubleCards, () => {
   count.value >= props.cards.length ? (isMoreVisible.value = false) : ''
 })
 </script>
