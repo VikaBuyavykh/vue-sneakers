@@ -9,13 +9,15 @@ import Favorites from './pages/Favorites.vue'
 import Profile from './pages/Profile.vue'
 import Login from './pages/Login.vue'
 import Register from './pages/Register.vue'
+import NotFound from './pages/NotFound.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/favorites', name: 'Favorites', component: Favorites },
   { path: '/profile', name: 'Profile', component: Profile },
   { path: '/login', name: 'Login', component: Login },
-  { path: '/register', name: 'Register', component: Register }
+  { path: '/register', name: 'Register', component: Register },
+  { path: '/*', name: 'NotFound', component: NotFound }
 ]
 
 const router = createRouter({

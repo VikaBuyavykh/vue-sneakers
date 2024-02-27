@@ -1,5 +1,5 @@
 <script setup>
-import { inject, ref, watch } from 'vue'
+import { inject, ref, watch, provide } from 'vue'
 import axios from 'axios'
 import Cards from '../components/Cards.vue'
 
@@ -87,6 +87,8 @@ watch(searchQuery, () => {
     )
   )
 })
+
+provide('home', { searchQuery })
 </script>
 
 <template>

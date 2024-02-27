@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, inject } from 'vue'
 import Card from './Card.vue'
 const props = defineProps({
   cards: Array,
@@ -11,13 +11,18 @@ const count = ref(12)
 const isMoreVisible = ref(true)
 const doubleCards = computed(() => props.cards.filter((card, index) => index < count.value))
 const emit = defineEmits(['onClickFavorite', 'onAddClick'])
+const { searchQuery } = inject('home')
 
 function showMore() {
   count.value = count.value + 4
 }
 
 watch(doubleCards, () => {
-  count.value >= props.cards.length ? (isMoreVisible.value = false) : ''
+  count.value >= props.cards.length ? (isMoreVisible.value = false) : (isMoreVisible.value = true)
+})
+
+watch(searchQuery, () => {
+  count.value = 12
 })
 </script>
 
