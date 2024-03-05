@@ -11,7 +11,7 @@ const count = ref(12)
 const isMoreVisible = ref(true)
 const doubleCards = computed(() => props.cards.filter((card, index) => index < count.value))
 const emit = defineEmits(['onClickFavorite', 'onAddClick'])
-const { searchQuery } = inject('home')
+const { searchQuery } = inject(!props.isFavorites ? 'home' : 'fav')
 
 function showMore() {
   count.value = count.value + 4
@@ -60,7 +60,3 @@ watch(searchQuery, () => {
   background-color: rgba(156, 246, 77, 0.28);
 }
 </style>
-<!-- v-bind:css="false"
-    v-on:before-enter="beforeEnter"
-    v-on:enter="enter"
-    v-on:leave="leave" -->
